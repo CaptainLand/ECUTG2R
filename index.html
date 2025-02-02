@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冻梨G2R音游同好社</title>
+    <style>
+        :root {
+            --main-color: #4A90E2; /* 改为蓝色主题 */
+            --bg-color: linear-gradient(135deg, #F0F8FF 0%, #E6F4FF 100%);
+            --text-color: #2A4E6C;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: url('arc.png') center/cover fixed, var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 音符动画背景 */
+        .music-note {
+            position: fixed;
+            opacity: 0.3;
+            z-index: 0;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            background: rgba(255,255,255,0.85); /* 添加半透明背景 */
+            backdrop-filter: blur(3px);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 20px rgba(74,144,226,0.1); /* 修改阴影颜色 */
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: var(--main-color);
+            margin: 10px 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(74,144,226,0.2);
+        }
+
+        .content {
+            margin: 40px 0;
+            line-height: 1.8;
+            padding: 30px;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .link-card {
+            background: rgba(74,144,226,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--main-color);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(74,144,226,0.2);
+        }
+
+        .qq-group {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 20px;
+            background: rgba(74,144,226,0.15);
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 2px dashed var(--main-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+        }
+
+        a {
+            color: var(--main-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* 生成随机音符 */
+        .music-note::before {
+            content: "♪";
+            font-size: 24px;
+            color: var(--main-color);
+        }
+
+        /* 创建多个音符动画 */
+        .music-note:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .music-note:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .music-note:nth-child(3) { left: 30%; animation-delay: 3s; }
+        .music-note:nth-child(4) { left: 40%; animation-delay: 2s; }
+        .music-note:nth-child(5) { left: 60%; animation-delay: 4s; }
+        .music-note:nth-child(6) { left: 80%; animation-delay: 5s; }
+    </style>
+</head>
+<body>
+    <!-- 背景音符 -->
+    <div class="music-note"></div>
+    <div class="music-note"></div>
+    <div class="music-note"></div>
+    <div class="music-note"></div>
+    <div class="music-note"></div>
+    <div class="music-note"></div>
+
+    <div class="container">
+        <header>
+            <h1>冻梨G2R音游同好会</h1>
+            <p>Go back to your roots</p>
+        </header>
+
+        <div class="content">
+            <h2>🎶 社团简介</h2>
+            <p>「G2R」是"Go back to your roots"的缩写，意为"回归初心"。在这个价值导向尘嚣甚上的时代，我们渴望找回最初享受音乐游戏的那份纯粹悸动——在指尖律动中感受节奏美学，在谱面研究中探索解题的无限可能。这里没有内卷与焦虑，只有对音游最本真的热爱与追求。</p>
+
+            <h2>✨ 核心价值</h2>
+            <ul>
+                <li>🎧 重拾初见音游的悸动心跳</li>
+                <li>👾 探索谱面设计的精妙世界</li>
+                <li>🎉 创造共享感动的玩家记忆</li>
+                <li>💞 构建温暖包容的同好社区</li>
+            </ul>
+
+            <div class="links">
+                <a href="https://www.bilibili.com/video/BV1Zb2PYaEDb/?share_source=copy_web&vd_source=e985799afe2974bd22d1691d5823c28e" class="link-card">
+                    <h3>🌌 2024国庆联合手元</h3>
+                    <p>点击跳转手元视频 →</p>
+                </a>
+
+                <a href="https://www.bilibili.com/video/BV1Xd6zYuENt/?share_source=copy_web&vd_source=e985799afe2974bd22d1691d5823c28e" class="link-card">
+                    <h3>🎇 欢庆2025联合手元</h3>
+                    <p>点击跳转手元视频 →</p>
+                </a>
+            </div>
+
+            <div class="qq-group">
+                🎵 立即加入我们的音乐宇宙<br>
+                <strong style="font-size:1.5em;">QQ群：517392478</strong>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 东华理工大学G2R音游同好会 - 让每个节拍都回归初心</p>
+        </footer>
+    </div>
+</body>
+</html>
