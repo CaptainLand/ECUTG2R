@@ -113,12 +113,16 @@
             font-weight: 500;
         }
 
-        /* 生成随机音符 */
         .music-note::before {
-            content: "♪";
-            font-size: 24px;
-            color: var(--main-color);
-        }
+    content: "";
+    display: inline-block;
+    width: 100px;  /* 根据图片的宽度调整 */
+    height: 100px; /* 根据图片的高度调整 */
+    background-image: url('maimainote.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 
         /* 创建多个音符动画 */
         .music-note:nth-child(1) { left: 10%; animation-delay: 0s; }
@@ -169,13 +173,13 @@
             </div>
 
             <div class="qq-group">
-                🎵 立即加入我们的音乐宇宙<br>
+                🎵 想要加入我们吗？<br>
                 <strong style="font-size:1.5em;">QQ群：517392478</strong>
             </div>
         </div>
 
         <footer>
-            <p>© 2025 东华理工大学G2R音游同好会 - 让每个节拍都回归初心</p>
+            <p>© 2025 东华理工大学G2R音游同好会</p>
         </footer>
     </div>
 </body>
