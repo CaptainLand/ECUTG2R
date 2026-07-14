@@ -126,21 +126,6 @@
     .section-title h2 { margin: 0; font: 900 clamp(32px, 5vw, 58px)/1 var(--font-display); letter-spacing: -.055em; }
     .section-note { max-width: 260px; padding-left: 15px; border-left: 4px solid var(--yellow); color: #68809f; font-size: 13px; line-height: 1.7; }
 
-    .manifesto { position: relative; border-top: 3px solid var(--navy); }
-    .manifesto-row { display: grid; grid-template-columns: 85px 1fr 1.25fr; align-items: center; gap: 32px; min-height: 148px; border-bottom: 1px solid var(--line); transition: padding .2s ease, background .2s ease; }
-    .manifesto-row:hover { padding-inline: 18px; background: linear-gradient(90deg, rgba(154,242,211,.18), rgba(185,165,255,.09), transparent); }
-    .manifesto-icon { color: white; width: 52px; height: 52px; display: grid; place-items: center; background: var(--blue); clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); font: 900 16px/1 var(--font-display); }
-    .manifesto-row:nth-child(2) .manifesto-icon { background: var(--pink); }
-    .manifesto-row:nth-child(3) .manifesto-icon { color: var(--navy); background: var(--yellow); }
-    .manifesto-row:nth-child(4) .manifesto-icon { background: #55cfa7; }
-    .manifesto-row h3 { margin: 0; font: 900 25px/1.2 var(--font-display); }
-    .manifesto-row p { margin: 0; color: #637c9d; line-height: 1.85; }
-    .stats-ribbon { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 45px; color: white; background: var(--navy); clip-path: polygon(18px 0, 100% 0, calc(100% - 18px) 100%, 0 100%); }
-    .stat { padding: 25px 30px; position: relative; }
-    .stat + .stat::before { content: ""; position: absolute; left: 0; top: 22%; width: 1px; height: 56%; background: rgba(255,255,255,.25); transform: rotate(12deg); }
-    .stat strong { display: block; color: var(--yellow); font: 900 34px/1 var(--font-display); }
-    .stat span { display: block; margin-top: 8px; font-size: 11px; letter-spacing: .09em; opacity: .78; }
-
     .works { position: relative; background: rgba(224,247,255,.42); border-block: 1px solid rgba(85,213,232,.3); }
     .works::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(135deg, transparent 0 25px, rgba(255,255,255,.58) 25px 26px); }
     .song-select { display: grid; grid-template-columns: 175px 1fr; position: relative; border: 3px solid var(--navy); background: rgba(255,255,255,.86); box-shadow: 11px 11px 0 rgba(185,165,255,.28); }
@@ -160,7 +145,7 @@
     .song h3 { max-width: 660px; margin: 8px 0 9px; font-size: clamp(16px, 2vw, 21px); line-height: 1.45; }
     .song-meta { display: flex; gap: 18px; color: #7086a4; font: 700 10px/1 var(--font-display); letter-spacing: .05em; }
     .difficulty { display: flex; align-items: center; gap: 9px; white-space: nowrap; }
-    .difficulty span { padding: 5px 8px; color: white; background: var(--song-color); font: 900 9px/1 var(--font-display); transform: skewX(-9deg); }
+    .difficulty span { padding: 5px 8px; color: var(--level-ink, white); background: var(--level-color, var(--song-color)); border: 2px solid var(--song-color); font: 900 9px/1 var(--font-display); transform: skewX(-9deg); }
     .difficulty strong { font: 900 26px/1 var(--font-display); }
     .play-arrow { font-size: 20px; color: var(--song-color); }
 
@@ -194,7 +179,6 @@
       .cabinet { min-height: 530px; }
       .section-head { grid-template-columns: 100px 1fr; }
       .section-note { display: none; }
-      .manifesto-row { grid-template-columns: 70px .8fr 1.2fr; }
       .song-select { grid-template-columns: 120px 1fr; }
       .select-side { padding: 20px 15px; }
       .join-grid { gap: 35px; }
@@ -217,10 +201,6 @@
       section { padding: 76px 0; }
       .section-head { grid-template-columns: 64px 1fr; gap: 16px; }
       .section-no { font-size: 48px; }
-      .manifesto-row { grid-template-columns: 55px 1fr; gap: 16px; padding-block: 22px; }
-      .manifesto-row p { grid-column: 2; }
-      .stats-ribbon { grid-template-columns: 1fr; clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%); }
-      .stat + .stat::before { top: 0; left: 8%; width: 84%; height: 1px; transform: none; }
       .song-select { grid-template-columns: 1fr; }
       .select-side { min-height: 85px; flex-direction: row; align-items: center; }
       .select-side span { writing-mode: initial; align-self: auto; }
@@ -247,7 +227,7 @@
       </a>
       <button class="menu" type="button" aria-label="展开导航" aria-expanded="false">≡</button>
       <div class="navlinks">
-        <a href="#about">ABOUT</a><a href="#works">WORKS</a><a class="nav-join" href="#join">JOIN THE CREW</a>
+        <a href="#works">WORKS</a><a class="nav-join" href="#join">JOIN THE CREW</a>
       </div>
     </nav>
   </header>
@@ -280,48 +260,27 @@
 
     <div class="ticker" aria-hidden="true"><div class="ticker-track">PERFECT <span>◆</span> SLIDE <span>★</span> BREAK <span>◇</span> RHYTHM <span>◆</span> G2R <span>★</span> PERFECT <span>◆</span> SLIDE <span>★</span> BREAK <span>◇</span> RHYTHM <span>◆</span> G2R <span>★</span></div></div>
 
-    <section id="about">
-      <div class="shell">
-        <header class="section-head reveal">
-          <div class="section-no">01</div>
-          <div class="section-title"><small>OUR PLAY STYLE</small><h2>同一拍，不同玩法</h2></div>
-          <div class="section-note">不是竞技排名，而是一群玩家共同留下的游玩记录。</div>
-        </header>
-        <div class="manifesto">
-          <article class="manifesto-row reveal"><div class="manifesto-icon">01</div><h3>回归初心</h3><p>Go back to your roots。记住第一次被节奏击中的瞬间，保持纯粹的喜欢。</p></article>
-          <article class="manifesto-row reveal"><div class="manifesto-icon">02</div><h3>研究谱面</h3><p>从读谱、手法到节奏理解，在讨论中把“不会打”变成“再来一局”。</p></article>
-          <article class="manifesto-row reveal"><div class="manifesto-icon">03</div><h3>共同创作</h3><p>跨游戏、跨年级完成联合手元，让每一位参与者都成为作品的一部分。</p></article>
-          <article class="manifesto-row reveal"><div class="manifesto-icon">04</div><h3>自由加入</h3><p>不设音游门槛。无论街机、移动端或主机，只要热爱节奏，都欢迎加入。</p></article>
-        </div>
-        <div class="stats-ribbon reveal">
-          <div class="stat"><strong>2024—26</strong><span>持续留下社群作品</span></div>
-          <div class="stat"><strong>15+</strong><span>联合手元覆盖音游</span></div>
-          <div class="stat"><strong>21+</strong><span>单次跨年共同参与</span></div>
-        </div>
-      </div>
-    </section>
-
     <section class="works" id="works">
       <div class="shell">
         <header class="section-head reveal">
-          <div class="section-no">02</div>
+          <div class="section-no">01</div>
           <div class="section-title"><small>COMMUNITY WORKS</small><h2>SELECT MUSIC</h2></div>
           <div class="section-note">选择一首社群作品，跳转 Bilibili 播放完整视频。</div>
         </header>
         <div class="song-select reveal">
           <aside class="select-side"><strong>G2R<br>TRACK<br>LIST</strong><span>4 TRACKS / 2024—2026</span></aside>
           <div class="song-list">
-            <a class="song" style="--song-color:#f36fa7" href="https://www.bilibili.com/video/BV17F7d6aESe/" target="_blank" rel="noopener noreferrer">
-              <div class="jacket">26</div><div><span class="song-year">NEW · 2026.06.04</span><h3>胸藏万卷，智达八方——26级高考应援暨迎新联合手元</h3><div class="song-meta"><span>MaoDie_Official</span><span>BV17F7d6aESe</span></div></div><div class="difficulty"><span>MASTER</span><strong>14+</strong><b class="play-arrow">▶</b></div>
+            <a class="song" style="--song-color:#f3b91f" href="https://www.bilibili.com/video/BV17F7d6aESe/" target="_blank" rel="noopener noreferrer">
+              <div class="jacket">26</div><div><span class="song-year">NEW · 2026.06.04</span><h3>胸藏万卷，智达八方——26级高考应援暨迎新联合手元</h3><div class="song-meta"><span>MaoDie_Official</span><span>BV17F7d6aESe</span></div></div><div class="difficulty"><span>ADVANCED</span><strong>11.5</strong><b class="play-arrow">▶</b></div>
             </a>
-            <a class="song" style="--song-color:#8f73e8" href="https://www.bilibili.com/video/BV1YSi3BLEWt/" target="_blank" rel="noopener noreferrer">
-              <div class="jacket">26</div><div><span class="song-year">2026.01.01</span><h3>来自“核一位”大学的“核艺味”主题跨年联合手元</h3><div class="song-meta"><span>Itz_XY-07</span><span>BV1YSi3BLEWt</span></div></div><div class="difficulty"><span>Re:MASTER</span><strong>15</strong><b class="play-arrow">▶</b></div>
+            <a class="song" style="--song-color:#f47b8d" href="https://www.bilibili.com/video/BV1YSi3BLEWt/" target="_blank" rel="noopener noreferrer">
+              <div class="jacket">26</div><div><span class="song-year">2026.01.01</span><h3>来自“核一位”大学的“核艺味”主题跨年联合手元</h3><div class="song-meta"><span>Itz_XY-07</span><span>BV1YSi3BLEWt</span></div></div><div class="difficulty"><span>EXPERT</span><strong>13.9</strong><b class="play-arrow">▶</b></div>
             </a>
-            <a class="song" style="--song-color:#37b997" href="https://www.bilibili.com/video/BV1Xd6zYuENt/" target="_blank" rel="noopener noreferrer">
-              <div class="jacket">25</div><div><span class="song-year">2025.01.02</span><h3>欢庆2025！21人15游联合手元——向时光告白</h3><div class="song-meta"><span>MaoDie_Official</span><span>BV1Xd6zYuENt</span></div></div><div class="difficulty"><span>EXPERT</span><strong>13+</strong><b class="play-arrow">▶</b></div>
+            <a class="song" style="--song-color:#9a4bd1" href="https://www.bilibili.com/video/BV1Xd6zYuENt/" target="_blank" rel="noopener noreferrer">
+              <div class="jacket">25</div><div><span class="song-year">2025.01.02</span><h3>欢庆2025！21人15游联合手元——向时光告白</h3><div class="song-meta"><span>MaoDie_Official</span><span>BV1Xd6zYuENt</span></div></div><div class="difficulty"><span>MASTER</span><strong>14.9</strong><b class="play-arrow">▶</b></div>
             </a>
-            <a class="song" style="--song-color:#4989dc" href="https://www.bilibili.com/video/BV1Zb2PYaEDb/" target="_blank" rel="noopener noreferrer">
-              <div class="jacket">24</div><div><span class="song-year">2024.10.09</span><h3>浮梦音游目害部联合手元——9游13人 / 三曲串烧</h3><div class="song-meta"><span>MaoDie_Official</span><span>BV1Zb2PYaEDb</span></div></div><div class="difficulty"><span>ADVANCED</span><strong>12</strong><b class="play-arrow">▶</b></div>
+            <a class="song" style="--song-color:#bd78d8;--level-color:#fff8ff;--level-ink:#9144b2" href="https://www.bilibili.com/video/BV1Zb2PYaEDb/" target="_blank" rel="noopener noreferrer">
+              <div class="jacket">24</div><div><span class="song-year">2024.10.09</span><h3>浮梦音游目害部联合手元——9游13人 / 三曲串烧</h3><div class="song-meta"><span>MaoDie_Official</span><span>BV1Zb2PYaEDb</span></div></div><div class="difficulty"><span>Re:MASTER</span><strong>15.0</strong><b class="play-arrow">▶</b></div>
             </a>
           </div>
         </div>
