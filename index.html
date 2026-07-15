@@ -129,9 +129,13 @@
 
     .join { padding: 0; position: relative; overflow: hidden; color: white; background: linear-gradient(105deg, #275fb5 0 58%, #805fd0 58% 100%); }
     .join::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 72% 20%, rgba(255,255,255,.14) 1px, transparent 2px); background-size: 18px 18px; }
-    .join-grid { min-height: 310px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 80px; position: relative; }
+    .join-grid { min-height: 390px; display: grid; grid-template-columns: 1fr auto .72fr; align-items: center; gap: 44px; position: relative; }
     .join h2 { margin: 0 0 15px; font: 900 clamp(38px, 6vw, 72px)/.95 var(--font-display); letter-spacing: -.06em; }
     .join p { margin: 0; color: rgba(255,255,255,.77); line-height: 1.8; }
+    .qr-card { padding: 10px 10px 12px; color: var(--navy); background: white; text-align: center; transform: rotate(1.5deg); box-shadow: 8px 8px 0 rgba(255,227,110,.92); }
+    .qr-window { width: 210px; aspect-ratio: 1; position: relative; overflow: hidden; background: #f4f6fa; border: 2px solid rgba(57,136,232,.18); }
+    .qr-window img { position: absolute; width: 135%; max-width: none; left: -17.2%; top: -97.6%; }
+    .qr-card span { display: block; margin-top: 10px; color: var(--blue); font: 900 9px/1 var(--font-display); letter-spacing: .16em; }
     .qq-unit { padding: 28px 34px; color: var(--navy); background: white; transform: rotate(-2deg); box-shadow: 9px 9px 0 var(--yellow); }
     .qq-unit span { display: block; color: var(--pink); font: 900 10px/1 var(--font-display); letter-spacing: .15em; }
     .qq-unit strong { display: block; margin: 10px 0 16px; font: 900 clamp(31px,4vw,48px)/1 var(--font-display); letter-spacing: -.03em; }
@@ -179,6 +183,8 @@
       .difficulty { grid-column: 2; justify-content: flex-start; }
       .song-meta { flex-wrap: wrap; gap: 8px 14px; }
       .join-grid { grid-template-columns: 1fr; padding: 66px 0; }
+      .qr-card { justify-self: center; }
+      .qr-window { width: min(220px, 64vw); }
       .qq-unit { margin-bottom: 9px; }
       .footer-inner { flex-direction: column; }
     }
@@ -212,7 +218,7 @@
           <p class="hero-copy">这里是东华理工大学 G2R 音游同好社。我们因为同一拍节奏相遇，在街机前交流、研究谱面，也把共同的热爱做成一次次联合手元。</p>
           <div class="hero-actions">
             <a class="action action-primary" href="#works">▶ SELECT MUSIC</a>
-            <button class="action action-light" type="button" data-copy="517392478">＋ JOIN QQ GROUP</button>
+            <button class="action action-light" type="button" data-copy="1031605438">＋ JOIN QQ GROUP</button>
           </div>
         </div>
       </div>
@@ -255,13 +261,14 @@
     <section class="join" id="join">
       <div class="join-grid shell">
         <div class="reveal"><h2>READY?<br>JOIN THE CREW.</h2><p>不用等到“打得足够好”再来。先一起玩，再一起变强。</p></div>
-        <div class="qq-unit reveal"><span>G2R COMMUNITY / QQ GROUP</span><strong>517392478</strong><button class="copy" type="button" data-copy="517392478">复制群号 · START</button></div>
+        <div class="qr-card reveal"><div class="qr-window"><img src="qq-group-qr-source.jpg" alt="东华理工大学G2R音游同好社QQ群二维码"></div><span>SCAN TO JOIN</span></div>
+        <div class="qq-unit reveal"><span>G2R COMMUNITY / QQ GROUP</span><strong>1031605438</strong><button class="copy" type="button" data-copy="1031605438">复制群号 · START</button></div>
       </div>
     </section>
   </main>
 
   <footer><div class="footer-inner shell"><span>© <span id="year"></span> ECUT G2R RHYTHM CREW</span><span>GO BACK TO YOUR ROOTS · KEEP THE BEAT</span></div></footer>
-  <div class="toast" role="status" aria-live="polite">群号已复制：517392478</div>
+  <div class="toast" role="status" aria-live="polite">群号已复制：1031605438</div>
 
   <script>
     const menu = document.querySelector('.menu');
