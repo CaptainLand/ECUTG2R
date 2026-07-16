@@ -86,7 +86,6 @@
         repeating-radial-gradient(circle, transparent 0 45px, rgba(85,213,232,.12) 46px 48px, transparent 49px 76px),
         conic-gradient(from 25deg, rgba(185,165,255,.22), rgba(85,213,232,.2), rgba(255,227,110,.18), rgba(255,159,200,.2), rgba(185,165,255,.22));
       mask-image: radial-gradient(circle, transparent 0 35%, black 36% 68%, transparent 69%);
-      animation: beat-orbit 18s linear infinite;
     }
     .hero-character::after {
       content: ""; position: absolute; left: 18%; right: 7%; bottom: 2%; height: 10%; z-index: -1;
@@ -94,8 +93,7 @@
     }
     .hero-character img {
       width: 100%; height: auto; display: block; position: relative; z-index: 2;
-      filter: drop-shadow(18px 18px 21px rgba(43,76,137,.16)) drop-shadow(-5px 0 9px rgba(185,165,255,.16));
-      animation: character-float 5.5s ease-in-out infinite;
+      filter: drop-shadow(15px 17px 18px rgba(43,76,137,.14));
     }
     .character-wordmark {
       position: absolute; top: 18%; right: -6%; z-index: -1; color: rgba(23,59,113,.075);
@@ -176,8 +174,6 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     @keyframes ticker { to { transform: translate3d(-50%, 0, 0); } }
-    @keyframes beat-orbit { to { transform: rotate(360deg); } }
-    @keyframes character-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 
     @media (max-width: 960px) {
       .hero { min-height: 730px; padding-top: 125px; }
@@ -259,7 +255,7 @@
             <button class="action action-light" type="button" data-copy="1031605438">＋ JOIN QQ GROUP</button>
           </div>
         </div>
-        <figure class="hero-character reveal">
+        <figure class="hero-character">
           <div class="character-wordmark" aria-hidden="true">HUALUO<small>ECUT CAMPUS NAVIGATOR</small></div>
           <img src="hualuo-rhythm-navigator.webp" alt="G2R 音游同好社社娘华珞，戴着耳机向你发出邀请">
         </figure>
