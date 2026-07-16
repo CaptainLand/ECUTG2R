@@ -49,10 +49,24 @@
     .nav { height: 100%; display: flex; align-items: center; justify-content: space-between; }
     .brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
     .brand-mark {
-      width: 46px; height: 46px; display: grid; place-items: center; color: white; font: 900 17px/1 var(--font-display);
-      background: linear-gradient(135deg, var(--blue), var(--lavender) 58%, var(--pink)); clip-path: polygon(50% 0, 94% 25%, 86% 78%, 50% 100%, 9% 76%, 3% 26%);
-      filter: drop-shadow(0 5px 7px rgba(57,136,232,.2));
+      width: 50px; height: 50px; display: grid; place-items: center; position: relative; flex: 0 0 auto;
+      filter: drop-shadow(0 5px 7px rgba(57,136,232,.2)); isolation: isolate;
     }
+    .brand-mark::before {
+      content: ""; position: absolute; inset: 0; z-index: 0; border-radius: 50%;
+      background:
+        repeating-conic-gradient(from -1deg, var(--navy) 0 2.5deg, transparent 2.5deg 20deg, var(--navy) 20deg 22.5deg),
+        conic-gradient(from -20deg, var(--cyan), var(--blue), var(--lavender), var(--pink), var(--yellow), var(--mint), var(--cyan));
+      -webkit-mask: radial-gradient(circle, transparent 0 48%, #000 50% 100%);
+      mask: radial-gradient(circle, transparent 0 48%, #000 50% 100%);
+      box-shadow: inset 0 0 0 2px var(--navy); animation: logo-ring-spin 9s linear infinite;
+      will-change: transform; transform: translateZ(0);
+    }
+    .brand-mark::after {
+      content: ""; position: absolute; inset: 10px; z-index: 1; border: 2px solid rgba(23,59,113,.78); border-radius: 50%;
+      background: linear-gradient(135deg, #fff 0 32%, #e7fbff 68%, #f3edff 100%); box-shadow: 0 0 0 2px rgba(255,255,255,.8);
+    }
+    .brand-core { position: relative; z-index: 2; color: var(--navy); font: 900 14px/1 var(--font-display); letter-spacing: -.04em; }
     .brand-copy strong { display: block; font: 900 17px/1 var(--font-display); letter-spacing: .05em; }
     .brand-copy span { display: block; margin-top: 5px; color: #6b84a8; font: 700 9px/1 var(--font-display); letter-spacing: .18em; }
     .navlinks { display: flex; align-items: center; gap: 30px; }
@@ -174,6 +188,7 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     @keyframes ticker { to { transform: translate3d(-50%, 0, 0); } }
+    @keyframes logo-ring-spin { to { transform: translateZ(0) rotate(360deg); } }
 
     @media (max-width: 960px) {
       .hero { min-height: 730px; padding-top: 125px; }
@@ -232,7 +247,7 @@
   <header class="topbar">
     <nav class="nav shell">
       <a class="brand" href="#top" aria-label="G2R 首页">
-        <span class="brand-mark">G2R</span>
+        <span class="brand-mark"><span class="brand-core">G2R</span></span>
         <span class="brand-copy"><strong>RHYTHM CREW</strong><span>GO BACK TO YOUR ROOTS</span></span>
       </a>
       <button class="menu" type="button" aria-label="展开导航" aria-expanded="false">≡</button>
