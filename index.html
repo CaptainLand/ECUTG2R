@@ -62,7 +62,7 @@
     .nav-join { padding: 11px 18px; color: white !important; background: var(--navy); clip-path: polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%); }
     .menu { display: none; border: 0; color: var(--navy); background: transparent; font-size: 25px; }
 
-    .hero { min-height: 690px; padding: 154px 0 108px; position: relative; overflow: hidden; }
+    .hero { min-height: 760px; padding: 154px 0 108px; position: relative; overflow: hidden; }
     .hero::before {
       content: ""; position: absolute; inset: 0; z-index: -2; opacity: .52;
       background-image: radial-gradient(circle, rgba(57,136,232,.34) 1.2px, transparent 1.2px); background-size: 24px 24px;
@@ -73,8 +73,35 @@
       background: linear-gradient(138deg, rgba(185,165,255,.18), rgba(85,213,232,.12) 42%, rgba(255,159,200,.16) 72%, transparent 72%);
       clip-path: polygon(31% 0, 100% 0, 100% 100%, 0 100%, 35% 52%, 12% 28%);
     }
-    .hero-grid { position: relative; z-index: 1; }
-    .hero-grid > div { max-width: 720px; }
+    .hero-grid { min-height: 498px; position: relative; z-index: 1; }
+    .hero-copy-block { max-width: 650px; position: relative; z-index: 4; }
+    .hero-character {
+      width: min(49vw, 530px); margin: 0; position: absolute; right: -30px; bottom: -108px; z-index: 2;
+      pointer-events: none; isolation: isolate;
+    }
+    .hero-character::before {
+      content: ""; position: absolute; left: 4%; right: 5%; bottom: 2.5%; z-index: -2; aspect-ratio: 1;
+      border: 2px solid rgba(57,136,232,.22); border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle, transparent 0 45px, rgba(85,213,232,.12) 46px 48px, transparent 49px 76px),
+        conic-gradient(from 25deg, rgba(185,165,255,.22), rgba(85,213,232,.2), rgba(255,227,110,.18), rgba(255,159,200,.2), rgba(185,165,255,.22));
+      mask-image: radial-gradient(circle, transparent 0 35%, black 36% 68%, transparent 69%);
+      animation: beat-orbit 18s linear infinite;
+    }
+    .hero-character::after {
+      content: ""; position: absolute; left: 18%; right: 7%; bottom: 2%; height: 10%; z-index: -1;
+      background: radial-gradient(ellipse, rgba(57,136,232,.25), transparent 68%); filter: blur(11px);
+    }
+    .hero-character img {
+      width: 100%; height: auto; display: block; position: relative; z-index: 2;
+      filter: drop-shadow(18px 18px 21px rgba(43,76,137,.16)) drop-shadow(-5px 0 9px rgba(185,165,255,.16));
+      animation: character-float 5.5s ease-in-out infinite;
+    }
+    .character-wordmark {
+      position: absolute; top: 18%; right: -6%; z-index: -1; color: rgba(23,59,113,.075);
+      font: 900 clamp(64px, 7vw, 104px)/.8 var(--font-display); letter-spacing: -.08em; writing-mode: vertical-rl;
+    }
+    .character-wordmark small { display: block; margin-top: 12px; color: rgba(57,136,232,.24); font: 800 9px/1 var(--font-display); letter-spacing: .22em; }
     .eyebrow { display: flex; align-items: center; gap: 11px; margin-bottom: 22px; font: 800 11px/1 var(--font-display); letter-spacing: .17em; }
     .eyebrow::before { content: ""; width: 44px; height: 7px; background: repeating-linear-gradient(90deg, var(--pink) 0 8px, transparent 8px 12px); }
     h1 { margin: 0; color: var(--navy); font: 900 clamp(55px, 7.2vw, 103px)/.86 var(--font-display); letter-spacing: -.075em; text-transform: uppercase; }
@@ -149,10 +176,16 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     @keyframes ticker { to { transform: translate3d(-50%, 0, 0); } }
+    @keyframes beat-orbit { to { transform: rotate(360deg); } }
+    @keyframes character-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 
     @media (max-width: 960px) {
-      .hero { padding-top: 125px; }
-      .hero-copy { max-width: 650px; }
+      .hero { min-height: 730px; padding-top: 125px; }
+      .hero-grid { min-height: 497px; }
+      .hero-copy-block { max-width: 570px; }
+      .hero-copy { max-width: 530px; }
+      .hero-character { width: 440px; right: -92px; }
+      .character-wordmark { display: none; }
       .section-head { grid-template-columns: 100px 1fr; }
       .section-note { display: none; }
       .song-select { grid-template-columns: 120px 1fr; }
@@ -167,8 +200,13 @@
       .navlinks { position: absolute; top: 66px; left: 0; right: 0; display: none; padding: 23px; align-items: stretch; flex-direction: column; background: rgba(255,255,255,.97); border-bottom: 2px solid var(--cyan); }
       .navlinks.open { display: flex; }
       .nav-join { text-align: center; }
-      .hero { min-height: auto; padding: 112px 0 76px; }
+      .hero { min-height: 1140px; padding: 112px 0 0; }
       .hero::after { right: -42%; width: 110%; opacity: .6; }
+      .hero-grid { min-height: 1028px; }
+      .hero-copy-block { max-width: none; }
+      .hero-copy { max-width: 92%; font-size: 14px; line-height: 1.75; }
+      .hero-character { width: min(100vw, 420px); right: -65px; bottom: -12px; }
+      .hero-character::before { left: 10%; right: 0; bottom: 1%; }
       h1 { font-size: clamp(50px, 18vw, 78px); }
       .ticker-group { gap: 25px; padding-inline: 18px; }
       .ticker-group span::after { margin-left: 25px; }
@@ -211,7 +249,7 @@
   <main id="top">
     <section class="hero">
       <div class="hero-grid shell">
-        <div class="reveal">
+        <div class="hero-copy-block reveal">
           <div class="eyebrow">ECUT · RHYTHM GAME COMMUNITY</div>
           <h1>Feel<br><span class="outline">the beat.</span></h1>
           <div class="hero-kicker"><i></i> G2R PRiSMATIC SESSION 2026</div>
@@ -221,6 +259,10 @@
             <button class="action action-light" type="button" data-copy="1031605438">＋ JOIN QQ GROUP</button>
           </div>
         </div>
+        <figure class="hero-character reveal">
+          <div class="character-wordmark" aria-hidden="true">HUALUO<small>ECUT CAMPUS NAVIGATOR</small></div>
+          <img src="hualuo-rhythm-navigator.webp" alt="G2R 音游同好社社娘华珞，戴着耳机向你发出邀请">
+        </figure>
       </div>
     </section>
 
